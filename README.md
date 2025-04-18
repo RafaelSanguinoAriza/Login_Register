@@ -102,6 +102,10 @@ Frontend:
 - `HTML, CSS y JavaScript`: para la interfaz de usuario.
 - `TailwindCSS`: para estilos rápidos y responsivos.
 
+## Contribuye al Proyecto
+
+¡Tu ayuda es bienvenida! Si tienes ideas para mejorar este proyecto, encuentra un error o deseas agregar nuevas funcionalidades, no dudes en contribuir.
+
 ## Licencia
 
 Este proyecto está bajo la licencia ISC. 
