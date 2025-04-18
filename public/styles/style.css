@@ -1,0 +1,254 @@
+/* 
+Este archivo contiene todos los estilos CSS extraídos del archivo HTML original. 
+Incluye variables CSS, estilos generales, estilos para botones, campos de entrada, 
+mensajes de error y otros estilos específicos para la interfaz de usuario. 
+*/
+
+/* Variables CSS */
+:root {
+  --primary-color: #4f46e5; /* Indigo 600 */
+  --secondary-color: #4338ca; /* Indigo 700 */
+  --error-border-color: #fca5a5; /* Red 300 */
+  --error-focus-border-color: #f87171; /* Red 400 */
+  --error-focus-shadow-color: rgba(239, 68, 68, 0.1); /* Red 500 con opacidad */
+  --error-bubble-color: #ef4444; /* Red 500 (para la burbuja) */
+  --font-family: "Inter", sans-serif;
+  --accent-color: #c7d2fe; /* Indigo 200 */
+  --input-focus-border-color: #a5b4fc; /* Indigo 300 */
+  --input-focus-shadow-color: rgba(
+    79,
+    70,
+    229,
+    0.1
+  ); /* Indigo 600 con opacidad */
+  --text-gray-medium: #6b7280; /* Gray 500 */
+  --text-gray-dark: #374151; /* Gray 700 */
+  --border-gray-light: #e5e7eb; /* Gray 200 */
+  --border-gray-medium: #d1d5db; /* Gray 300 */
+  --bg-gray-light: #f9fafb; /* Gray 50 */
+  --border-container-light: #f3f4f6; /* Gray 100 */
+  --success-color: #4ade80; /* Lime 400 */
+}
+
+/* Estilos generales */
+body {
+  font-family: var(--font-family);
+  background-color: #e0e7ff;
+  background-image: linear-gradient(135deg, #a8bfff 0%, #e2d8ff 100%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d1d5db' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+}
+
+.form-container {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease-in-out; /* Transición solo para sombra */
+  padding: 2.5rem;
+  border: 1px solid var(--border-container-light);
+  /* No necesita position relative si no hay animaciones con absolute */
+}
+@media (min-width: 768px) {
+  .form-container {
+    padding: 3rem;
+  }
+}
+
+/* Estilos Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.btn:active {
+  transform: translateY(0px);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+.btn-social {
+  background-color: #ffffff;
+  color: var(--text-gray-dark);
+  border: 1px solid var(--border-gray-light);
+  font-weight: 500;
+}
+.btn-social:hover {
+  background-color: var(--bg-gray-light);
+  border-color: var(--border-gray-medium);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.btn-social i {
+  transition: transform 0.2s ease;
+}
+.btn-social:hover i.fa-google {
+  transform: scale(1.1);
+}
+.btn-social:hover i.fa-github {
+  transform: rotate(5deg) scale(1.1);
+}
+
+/* Estilos Campos Entrada */
+.input-field {
+  appearance: none;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-gray-medium);
+  padding: 0.875rem 1rem;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.95rem;
+}
+input[type="password"].input-field {
+  padding-right: 3rem;
+}
+.input-field:focus {
+  outline: none;
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 0 4px var(--input-focus-shadow-color);
+}
+.input-field::placeholder {
+  color: #9ca3af;
+}
+.input-field.input-error {
+  border-color: var(--error-border-color);
+}
+.input-field.input-error:focus {
+  border-color: var(--error-focus-border-color);
+  box-shadow: 0 0 0 4px var(--error-focus-shadow-color);
+}
+
+/* Estilo Mensaje Error */
+.error-message {
+  position: relative;
+  background-color: var(--error-bubble-color);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+  width: fit-content;
+  max-width: 100%;
+  transition: opacity 0.2s ease-in-out;
+}
+.error-message::after {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid var(--error-bubble-color);
+}
+
+/* Estilos lista requisitos */
+#password-requirements {
+  margin-top: 0.75rem;
+  padding-left: 0.5rem;
+  transition: opacity 0.3s ease-in-out;
+}
+#password-requirements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#password-requirements li {
+  color: var(--text-gray-medium);
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 1rem;
+}
+#password-requirements li.requirement-met {
+  color: var(--success-color);
+  text-decoration: line-through;
+}
+
+/* Contenedor contraseña, Icono ojo, Enlace cambio form */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.form-field-container {
+  margin-bottom: 0.75rem;
+}
+.form-field-container.mb-last {
+  margin-bottom: 0.75rem;
+}
+.toggle-password {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  cursor: pointer;
+  color: var(--text-gray-medium);
+  transition: color 0.2s ease;
+}
+.toggle-password:hover {
+  color: var(--primary-color);
+}
+.form-toggle-link {
+  font-weight: 500;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.form-toggle-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Clases de Animación Eliminadas */
+/* .form-transition, .form-visible, .form-hidden-state ya no son necesarias */
+
+/* Títulos */
+.form-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .form-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+.title-accent {
+  width: 4rem;
+  height: 0.25rem;
+  background-color: var(--accent-color);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  border-radius: 9999px;
+}
+
+/* Helper Ocultar */
+.hidden {
+  display: none;
+}
