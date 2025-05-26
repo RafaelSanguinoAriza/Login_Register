@@ -7,7 +7,6 @@ Este proyecto es una aplicación web que permite a los usuarios registrarse, ini
 Login_Register/
 |
 ├── public/
-│   ├── index.html
 │   ├── assets/
 │   │   ├── fonts/
 │   │   └── images/
@@ -27,6 +26,7 @@ Login_Register/
 │   └── utils/
 │       ├── db.js
 │       └── emailService.js
+├── index.html
 ├── .gitignore
 ├── package-lock.json
 ├── package.json
